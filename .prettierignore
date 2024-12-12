@@ -1,0 +1,23 @@
+# 忽略构建输出目录
+dist
+build
+
+# 忽略 node_modules 目录
+node_modules
+
+# 忽略环境配置文件
+.env
+.env.local
+.env.*.local
+
+# 忽略特定文件类型
+*.log
+*.md
+*.html
+
+# 忽略特定文件夹
+public
+
+# 忽略特定配置文件
+package-lock.json
+yarn.lock
