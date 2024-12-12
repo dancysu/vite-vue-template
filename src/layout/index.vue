@@ -1,9 +1,9 @@
 <template>
   <div class="layout">
-    <aside :class="{ fold: fold ? true : false }">
-      <Logo :fold="fold" />
+    <aside :class="{ fold: isFold }">
+      <Logo />
       <el-scrollbar class="scrollbar">
-        <Menu :isCollapse="fold" />
+        <Menu :isCollapse="isFold" />
       </el-scrollbar>
     </aside>
     <section>
@@ -11,7 +11,7 @@
         <Tabbar />
       </header>
       <main>
-        <router-view></router-view>
+        <router-view />
       </main>
     </section>
   </div>
@@ -25,7 +25,7 @@ import Tabbar from './tabbar/index.vue'
 import useSettingStore from '@/store/setting.ts'
 const settingStore = useSettingStore()
 // 使用 toRefs 来保持响应性
-const { fold } = toRefs(settingStore)
+const { isFold } = toRefs(settingStore)
 </script>
 <style lang="scss" scoped>
 .layout {
@@ -38,16 +38,19 @@ const { fold } = toRefs(settingStore)
     width: $aside-max-width;
     height: 100%;
     background: #242424;
+    transition: width 0.3s ease-in-out;
+
+    &.fold {
+      width: $aside-min-width;
+    }
     .scrollbar {
       width: 100%;
       height: calc(100% - $header-height);
     }
   }
-  .fold {
-    width: $aside-min-width;
-  }
+
   section {
-    width: 100%;
+    flex: 1;
     height: 100vh;
     background: #fff;
     display: flex;
@@ -60,8 +63,7 @@ const { fold } = toRefs(settingStore)
     }
 
     main {
-      width: 100%;
-      height: calc(100% - $header-height);
+      flex: 1;
       background: #fff;
     }
   }

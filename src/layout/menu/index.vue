@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <el-menu
-      default-active="2"
+      default-active="1-1"
       class="el-menu-vertical-demo"
       background-color="#242424"
       text-color="#fff"
@@ -12,7 +12,7 @@
       <el-sub-menu index="1">
         <template #title>
           <el-icon><location /></el-icon>
-          <span>{{ props.isCollapse }}</span>
+          <span>Navigator One</span>
         </template>
         <el-menu-item-group>
           <template #title><span>Group One</span></template>
@@ -28,10 +28,10 @@
         </el-sub-menu>
       </el-sub-menu>
       <el-menu-item index="2">
-        <el-icon><icon-menu /></el-icon>
+        <el-icon><Menu /></el-icon>
         <template #title>Navigator Two</template>
       </el-menu-item>
-      <el-menu-item index="3" disabled>
+      <el-menu-item index="3">
         <el-icon><document /></el-icon>
         <template #title>Navigator Three</template>
       </el-menu-item>
